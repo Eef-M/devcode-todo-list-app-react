@@ -77,7 +77,7 @@ const TodoItems = (props) => {
                     </button>
                 </div>
             </div>
-            <DelModalItem data-cy="modal-delete" show={openModal} handleTodoItems={handleTodoItems} itemID={itemID} todoTitle={todoTitle} closeModal={closeModalDelete} />
+            <DelModalItem show={openModal} handleTodoItems={handleTodoItems} itemID={itemID} todoTitle={todoTitle} closeModal={closeModalDelete} />
         </>
     )
 }
