@@ -7,11 +7,15 @@ import AddModalTodo from "../../components/todoitem/AddModalTodo"
 import SortDropDown from "../../components/todoitem/SortDropDown"
 import { sort } from "../../components/todoitem/sortData"
 import { useCallback } from "react"
+import ConfirmDelTodo from "../../components/todoitem/ConfirmDelTodo"
 
 const TodoItem = () => {
     const [todoItems, setTodoItems] = useState([])
     const [focused, setFocused] = useState(false)
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState({
+        addModal: false,
+        delConfirm: false,
+    });
     const [isLoading, setIsLoading] = useState(false);
     const [selectedTodoItem, setSelectedTodoItem] = useState({})
     const [selected, setSelected] = useState(sort[0]);
@@ -62,7 +66,16 @@ const TodoItem = () => {
     }
 
     function openModal() {
-        setIsOpen(true);
+        setIsOpen({ ...isOpen, addModal: true });
+    }
+
+    function closeConfirm() {
+        setIsOpen({ ...isOpen, delConfirm: false })
+    }
+
+    function openConfirm() {
+        handleGetAllTodoItems()
+        setIsOpen({ ...isOpen, delConfirm: true })
     }
 
     if (selected.id === 1) {
@@ -132,7 +145,9 @@ const TodoItem = () => {
                                         handleSetSelectedTodo={handleSelectedTodoItem}
                                         selectedTodoItem={selectedTodoItem}
                                         setIsOpen={setIsOpen}
+                                        isOpen={isOpen}
                                         isActive={item?.is_active}
+                                        openConfirm={openConfirm}
                                     />
                                 ))
                             ) : (
@@ -146,6 +161,7 @@ const TodoItem = () => {
 
             </div>
             <AddModalTodo show={isOpen} activityID={id} handleTodoItems={handleGetAllTodoItems} selectedTodoItem={selectedTodoItem} setIsOpen={setIsOpen} />
+            <ConfirmDelTodo show={isOpen.delConfirm} closeModal={closeConfirm} />
         </>
     )
 }

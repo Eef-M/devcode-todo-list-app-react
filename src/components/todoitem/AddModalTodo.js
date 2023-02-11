@@ -65,7 +65,7 @@ const AddModalTodo = (props) => {
     }
 
     const HandleModalClose = () => {
-        setIsOpen(false);
+        setIsOpen({ ...show, addModal: false });
         resetInputValue();
     }
 
@@ -91,7 +91,7 @@ const AddModalTodo = (props) => {
 
     return (
         <div data-cy="modal-add">
-            <Transition appear show={show} as={Fragment}>
+            <Transition appear show={show.addModal} as={Fragment}>
                 <Dialog as="div" className="relative z-10" initialFocus={completeButtonRef} onClose={HandleModalClose}>
                     <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
                         <div className="fixed inset-0 bg-black bg-opacity-25" />

@@ -14,8 +14,10 @@ const TodoItems = (props) => {
         itemID,
         handleTodoItems,
         setIsOpen,
+        isOpen,
         handleSetSelectedTodo,
         isActive,
+        openConfirm
     } = props;
 
     const handleCheckItem = async (id) => {
@@ -35,7 +37,7 @@ const TodoItems = (props) => {
 
     const openModalEdit = () => {
         handleSetSelectedTodo(itemID, todoTitle, todoPriority)
-        setIsOpen(true);
+        setIsOpen({ ...isOpen, addModal: true });
     }
 
     const openModalDelete = () => {
@@ -77,7 +79,7 @@ const TodoItems = (props) => {
                     </button>
                 </div>
             </div>
-            <DelModalItem show={openModal} handleTodoItems={handleTodoItems} itemID={itemID} todoTitle={todoTitle} closeModal={closeModalDelete} />
+            <DelModalItem show={openModal} itemID={itemID} todoTitle={todoTitle} closeModal={closeModalDelete} openConfirm={openConfirm} />
         </>
     )
 }

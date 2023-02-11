@@ -8,10 +8,10 @@ const DelModalItem = (props) => {
 
     const {
         show,
-        handleTodoItems,
         itemID,
         closeModal,
-        todoTitle
+        todoTitle,
+        openConfirm
     } = props;
 
     const completeButtonRef = useRef(null)
@@ -19,7 +19,7 @@ const DelModalItem = (props) => {
     const handleDelete = async (id) => {
         await deleteTodoItem(id);
 
-        handleTodoItems()
+        openConfirm()
     }
 
     return (
