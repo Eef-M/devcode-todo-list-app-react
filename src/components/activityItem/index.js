@@ -43,7 +43,7 @@ const ActivityItem = (props) => {
                     </button>
                 </div>
             </div>
-            <DeleteModal data-cy="modal-delete" show={isOpen} closeModal={closeModal} itemTitle={title} itemId={id} openSuccessModal={openModalSuccess} handleGetAllActivity={handleGetAllActivity} />
+            <DeleteModal show={isOpen} closeModal={closeModal} itemTitle={title} itemId={id} openSuccessModal={openModalSuccess} handleGetAllActivity={handleGetAllActivity} />
 
         </>
     )

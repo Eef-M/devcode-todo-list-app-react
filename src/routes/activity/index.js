@@ -76,7 +76,7 @@ const Activity = () => {
                         )}
                     </div>)}
             </div>
-            <ConfirmDeleteModal data-cy="modal-information" show={isOpen} closeModal={closeModal} />
+            <ConfirmDeleteModal show={isOpen} closeModal={closeModal} />
         </>
     )
 }
