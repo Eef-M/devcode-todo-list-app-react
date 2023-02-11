@@ -132,7 +132,7 @@ const TodoItem = () => {
                     )}
                 </div>
             </div>
-            <AddModalTodo data-cy="modal-add" show={isOpen} activityID={id} handleTodoItems={handleGetAllTodoItems} selectedTodoItem={selectedTodoItem} setIsOpen={setIsOpen} />
+            <AddModalTodo show={isOpen} activityID={id} handleTodoItems={handleGetAllTodoItems} selectedTodoItem={selectedTodoItem} setIsOpen={setIsOpen} />
         </>
     )
 }
