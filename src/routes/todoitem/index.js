@@ -118,6 +118,7 @@ const TodoItem = () => {
                     <div className="flex items-center justify-center gap-4">
                         {/* -------------------------------------------------------------------------------------------------------------- */}
                         <SortDropDown selected={selected} setSelected={setSelected} sort={sort} />
+
                         {/* -------------------------------------------------------------------------------------------------------------- */}
                         <button data-cy="todo-add-button" className="rounded-full bg-sky-500 h-14 w-40 font-bold text-white text-xl" onClick={openModal}>
                             <i className="fa-solid fa-plus"></i> Tambah
@@ -144,7 +145,7 @@ const TodoItem = () => {
                         ))
                     ) : (
                         <button onClick={openModal} style={{ cursor: "default" }}>
-                            <img src={todoEmptyStateImage} className="max-w-full h-auto" alt="..." />
+                            <img data-cy="activity-empty-state" src={todoEmptyStateImage} className="max-w-full h-auto" alt="..." />
                         </button>
                     )}
                 </div>

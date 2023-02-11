@@ -71,7 +71,7 @@ const Activity = () => {
                             ))
                         ) : (
                             <button onClick={handleAddActivity} style={{ cursor: "default" }}>
-                                <img src={activityEmptyImage} className="max-w-full h-auto" alt="..." />
+                                <img data-cy="activity-empty-state" src={activityEmptyImage} className="max-w-full h-auto" alt="..." />
                             </button>
                         )}
                     </div>)}
