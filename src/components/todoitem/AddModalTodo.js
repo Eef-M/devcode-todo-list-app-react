@@ -123,9 +123,11 @@ const AddModalTodo = (props) => {
                                             <label data-cy={todoId > 0 ? '' : "modal-add-priority-title"} htmlFor="nama-list" className='text-xs font-bold'>PRITORITY</label>
                                             <Listbox value={selected} onChange={setSelected}>
                                                 <div className="relative mt-1">
-                                                    <Listbox.Button data-cy={todoId > 0 ? '' : "modal-add-priority-item"} className="relative w-[220px] cursor-default border-2 border-neutral-400 rounded-md p-3 focus:border-sky-400 flex items-center justify-start gap-3">
-                                                        <div className={`w-4 h-4 rounded-full ${selected?.label}`}></div>
-                                                        <span className="block truncate">{selected?.name}</span>
+                                                    <Listbox.Button className="relative w-[220px] cursor-default border-2 border-neutral-400 rounded-md p-3 focus:border-sky-400 flex items-center justify-start gap-3">
+                                                        <div data-cy={todoId > 0 ? '' : "modal-add-priority-item"} className='flex items-center justify-center gap-3'>
+                                                            <div className={`w-4 h-4 rounded-full ${selected?.label}`}></div>
+                                                            <span className="block truncate">{selected?.name}</span>
+                                                        </div>
                                                         <div data-cy={todoId > 0 ? '' : "modal-add-priority-dropdown"} className="absolute inset-y-0 right-0 flex items-center pr-2">
                                                             <i className="fa-solid fa-chevron-down"></i>
                                                         </div>
