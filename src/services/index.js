@@ -9,6 +9,12 @@ export async function getAllActivity() {
     })
 }
 
+export async function getDetailActivity(id) {
+    return await axios.get(`${BASE_URL}/activity-groups/${id}`).catch((error) => {
+        return error;
+    })
+}
+
 export async function addNewActivity(payload) {
     return await axios.post(`${BASE_URL}/activity-groups`, payload).catch((error) => {
         return error;

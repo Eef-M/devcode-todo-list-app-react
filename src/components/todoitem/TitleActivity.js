@@ -14,6 +14,8 @@ const TitleActivity = (props) => {
         setActivityTitle(value)
     }
 
+
+
     return (
         <>
             <input
