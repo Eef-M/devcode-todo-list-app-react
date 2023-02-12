@@ -26,18 +26,20 @@ const SortDropDown = (props) => {
                         <Listbox.Options className="absolute mt-1 max-h-60 w-[320px] overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                             {sort.map((srt) => (
                                 <Listbox.Option
+                                    data-cy="sort-selection"
                                     key={srt?.id}
                                     className={({ active }) =>
                                         `relative flex items-center justify-between gap-5 cursor-default select-none py-2 px-8  ${active ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
                                         }`
                                     }
                                     value={srt}
-                                    data-cy="sort-selection"
                                 >
                                     {({ selected }) => (
                                         <>
                                             <div data-cy="sort-selection-selected" className='flex items-center justify-center gap-4'>
-                                                {srt?.component}
+                                                <div data-cy="sort-selection-icon">
+                                                    {srt?.component}
+                                                </div>
                                                 <span
                                                     data-cy="sort-selection-title"
                                                     className={`block truncate text-lg ${selected ? 'font-medium' : 'font-normal'
@@ -47,7 +49,7 @@ const SortDropDown = (props) => {
                                                 </span>
                                             </div>
                                             {selected ? (
-                                                <CheckIcon data-cy="sort-selection-icon" className='w-4 h-4' />
+                                                <CheckIcon className='w-4 h-4' />
                                             ) : null}
                                         </>
                                     )}

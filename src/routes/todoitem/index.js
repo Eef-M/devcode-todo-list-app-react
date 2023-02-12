@@ -89,41 +89,39 @@ const TodoItem = () => {
 
     return (
         <>
-            <div className="container mx-auto max-w-6xl sm:px-10 lg:px-20 mt-8 flex items-center justify-between flex-wrap flex-col gap-5">
-                <div className="flex items-center justify-between w-full p-2">
-                    <div className="flex items-center justify-center gap-5">
+            <div className="container mx-auto max-w-6xl sm:px-10 lg:px-20 mt-8 flex items-center justify-between flex-wrap gap-5">
+                <div className="flex items-center justify-center gap-5">
 
-                        <Link to='/'>
-                            <i data-cy="todo-back-button" className="fa-solid fa-angle-left text-4xl"></i>
-                        </Link>
-                        {focused ? (
-                            <input
-                                type="text"
-                                value={activityTitle}
-                                className='font-bold text-4xl bg-transparent focus:border-transparent focus:outline-none focus:border-neutral-700 focus:border-b focus:py-2 focus:w-full'
-                                onFocus={onFocus}
-                                onBlur={onBlur}
-                                autoFocus
-                                onChange={handleUpdateActivity}
-                            />
-                        ) : (
-                            <h1 data-cy="todo-title" className="font-bold text-4xl" onClick={() => {
-                                onFocus()
-                            }}>{activityTitle}</h1>
-                        )}
-                        <i data-cy="todo-title-edit-button" className="fa-solid fa-pencil cursor-pointer text-xl text-zinc-500" onClick={() => {
+                    <Link to='/'>
+                        <i data-cy="todo-back-button" className="fa-solid fa-angle-left text-4xl"></i>
+                    </Link>
+                    {focused ? (
+                        <input
+                            type="text"
+                            value={activityTitle}
+                            className='font-bold text-4xl bg-transparent focus:border-transparent focus:outline-none focus:border-neutral-700 focus:border-b focus:py-2 focus:w-full'
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            autoFocus
+                            onChange={handleUpdateActivity}
+                        />
+                    ) : (
+                        <h1 data-cy="todo-title" className="font-bold text-4xl" onClick={() => {
                             onFocus()
-                        }}></i>
-                    </div>
-                    <div className="flex items-center justify-center gap-4">
-                        {/* -------------------------------------------------------------------------------------------------------------- */}
-                        <SortDropDown selected={selected} setSelected={setSelected} sort={sort} />
+                        }}>{activityTitle}</h1>
+                    )}
+                    <i data-cy="todo-title-edit-button" className="fa-solid fa-pencil cursor-pointer text-xl text-zinc-500" onClick={() => {
+                        onFocus()
+                    }}></i>
+                </div>
+                <div className="flex items-center justify-center gap-4">
+                    {/* -------------------------------------------------------------------------------------------------------------- */}
+                    <SortDropDown selected={selected} setSelected={setSelected} sort={sort} />
 
-                        {/* -------------------------------------------------------------------------------------------------------------- */}
-                        <button data-cy="todo-add-button" className="rounded-full bg-sky-500 h-14 w-40 font-bold text-white text-xl" onClick={openModal}>
-                            <i className="fa-solid fa-plus"></i> Tambah
-                        </button>
-                    </div>
+                    {/* -------------------------------------------------------------------------------------------------------------- */}
+                    <button data-cy="todo-add-button" className="rounded-full bg-sky-500 h-14 w-40 font-bold text-white text-xl" onClick={openModal}>
+                        <i className="fa-solid fa-plus"></i> Tambah
+                    </button>
                 </div>
                 <div className="flex items-center lg:justify-left flex-wrap w-full gap-3 flex-col my-6">
                     {todoItems.length > 0 ? (

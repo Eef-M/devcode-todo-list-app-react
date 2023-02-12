@@ -124,7 +124,7 @@ const AddModalTodo = (props) => {
                                             <Listbox value={selected} onChange={setSelected}>
                                                 <div className="relative mt-1">
                                                     <Listbox.Button className="relative w-[220px] cursor-default border-2 border-neutral-400 rounded-md p-3 focus:border-sky-400 flex items-center justify-start gap-3">
-                                                        <div data-cy="modal-add-priority-item" className='flex items-center justify-center gap-3'>
+                                                        <div className='flex items-center justify-center gap-3'>
                                                             <div className={`w-4 h-4 rounded-full ${selected?.label}`}></div>
                                                             <div className="text-md">{selected?.name}</div>
                                                         </div>
@@ -141,9 +141,10 @@ const AddModalTodo = (props) => {
                                                         <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                                             {priority.map((person, personIdx) => (
                                                                 <Listbox.Option
+                                                                    data-cy="modal-add-priority-item"
                                                                     key={personIdx}
                                                                     className={({ active }) =>
-                                                                        `relative flex items-center justify-start gap-4 cursor-default select-none p-1 pl-10 pr-4 ${active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
+                                                                        `relative flex items-center justify-start gap-4 cursor-default select-none p-1 pl-10 pr-4 ${active ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
                                                                         }`
                                                                     }
                                                                     value={person}
