@@ -25,7 +25,7 @@ const TodoItem = () => {
     const locData = location.state
     const [activityTitle, setActivityTitle] = useState(locData)
 
-    const handleGetAllTodoItems = useCallback(async () => {
+    const getDetail = useCallback(async () => {
         const res = await getAllTodo(id);
         setTodoItems(res?.data?.data);
 
@@ -40,8 +40,15 @@ const TodoItem = () => {
     }
 
     useEffect(() => {
-        handleGetAllTodoItems()
-    }, [handleGetAllTodoItems])
+        const updated = async () => {
+            await updateActivity(id, {
+                title: activityTitle
+            })
+        }
+
+        getDetail()
+        updated()
+    }, [getDetail, id, activityTitle])
 
     const onFocus = () => {
         setFocused(true)
@@ -60,7 +67,7 @@ const TodoItem = () => {
     }
 
     function openConfirm() {
-        handleGetAllTodoItems()
+        getDetail()
         setIsOpen({ ...isOpen, delConfirm: true })
     }
 
@@ -114,7 +121,7 @@ const TodoItem = () => {
                                 itemID={item?.id}
                                 todoTitle={item?.title}
                                 todoPriority={item?.priority}
-                                handleTodoItems={handleGetAllTodoItems}
+                                handleTodoItems={getDetail}
                                 handleSetSelectedTodo={handleSelectedTodoItem}
                                 selectedTodoItem={selectedTodoItem}
                                 setIsOpen={setIsOpen}
@@ -130,7 +137,7 @@ const TodoItem = () => {
                     )}
                 </div>
             </div>
-            <AddModalTodo show={isOpen} activityID={id} handleTodoItems={handleGetAllTodoItems} selectedTodoItem={selectedTodoItem} setIsOpen={setIsOpen} />
+            <AddModalTodo show={isOpen} activityID={id} handleTodoItems={getDetail} selectedTodoItem={selectedTodoItem} setIsOpen={setIsOpen} />
             <ConfirmDelTodo show={isOpen.delConfirm} closeModal={closeConfirm} />
         </>
     )
