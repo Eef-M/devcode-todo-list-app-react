@@ -8,6 +8,7 @@ import SortDropDown from "../../components/todoitem/SortDropDown"
 import { sort } from "../../components/todoitem/sortData"
 import { useCallback } from "react"
 import ConfirmDelTodo from "../../components/todoitem/ConfirmDelTodo"
+import TitleActivity from "../../components/todoitem/TitleActivity"
 
 const TodoItem = () => {
     const [todoItems, setTodoItems] = useState([])
@@ -39,11 +40,17 @@ const TodoItem = () => {
     }
 
     useEffect(() => {
-        updateActivity(id, {
-            title: activityTitle
-        })
+        const updated = async () => {
+            await updateActivity(id, {
+                title: activityTitle
+            })
+        }
 
         handleGetAllTodoItems()
+
+        setTimeout(() => {
+            updated()
+        }, 500)
     }, [handleGetAllTodoItems, id, activityTitle])
 
     const onFocus = () => {
@@ -89,15 +96,7 @@ const TodoItem = () => {
                         <i data-cy="todo-back-button" className="fa-solid fa-angle-left text-4xl"></i>
                     </Link>
                     {focused ? (
-                        <input
-                            type="text"
-                            value={activityTitle}
-                            className='font-bold text-4xl bg-transparent focus:border-transparent focus:outline-none focus:border-neutral-700 focus:border-b focus:py-2 focus:w-full'
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                            autoFocus
-                            onChange={(e) => setActivityTitle(e.target.value)}
-                        />
+                        <TitleActivity activityTitle={activityTitle} setActivityTitle={setActivityTitle} isFocus={onFocus} isBlur={onBlur} />
                     ) : (
                         <h1 data-cy="todo-title" className="font-bold text-4xl" onClick={() => {
                             onFocus()
