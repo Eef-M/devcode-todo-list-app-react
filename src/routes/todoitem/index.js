@@ -24,15 +24,10 @@ const TodoItem = () => {
     const locData = location.state
     const [activityTitle, setActivityTitle] = useState(locData)
 
-
-
-    const handleUpdateActivity = (e) => {
-        setActivityTitle(e.target.value)
-    }
-
     const handleGetAllTodoItems = useCallback(async () => {
         const res = await getAllTodo(id);
         setTodoItems(res?.data?.data);
+
     }, [id])
 
     const handleSelectedTodoItem = (id, title, priority) => {
@@ -44,15 +39,12 @@ const TodoItem = () => {
     }
 
     useEffect(() => {
-        const updateTitle = async () => {
-            await updateActivity(id, {
-                title: activityTitle
-            })
-        }
+        updateActivity(id, {
+            title: activityTitle
+        })
 
         handleGetAllTodoItems()
-        updateTitle()
-    }, [activityTitle, id, handleGetAllTodoItems])
+    }, [handleGetAllTodoItems, id, activityTitle])
 
     const onFocus = () => {
         setFocused(true)
@@ -87,6 +79,7 @@ const TodoItem = () => {
         todoItems.sort((a, b) => (a.is_active > b.is_active ? -1 : 1))
     }
 
+
     return (
         <>
             <div className="container mx-auto max-w-6xl sm:px-10 lg:px-20 mt-8 flex items-center justify-between flex-wrap gap-5">
@@ -103,7 +96,7 @@ const TodoItem = () => {
                             onFocus={onFocus}
                             onBlur={onBlur}
                             autoFocus
-                            onChange={handleUpdateActivity}
+                            onChange={(e) => setActivityTitle(e.target.value)}
                         />
                     ) : (
                         <h1 data-cy="todo-title" className="font-bold text-4xl" onClick={() => {
