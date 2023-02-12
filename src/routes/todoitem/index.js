@@ -40,18 +40,8 @@ const TodoItem = () => {
     }
 
     useEffect(() => {
-        const updated = async () => {
-            await updateActivity(id, {
-                title: activityTitle
-            })
-        }
-
         handleGetAllTodoItems()
-
-        setTimeout(() => {
-            updated()
-        }, 500)
-    }, [handleGetAllTodoItems, id, activityTitle])
+    }, [handleGetAllTodoItems])
 
     const onFocus = () => {
         setFocused(true)
