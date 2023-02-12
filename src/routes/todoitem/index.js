@@ -134,7 +134,7 @@ const TodoItem = () => {
                         ))
                     ) : (
                         <button onClick={openModal} style={{ cursor: "default" }}>
-                            <img data-cy="activity-empty-state" src={todoEmptyStateImage} className="max-w-full h-auto" alt="..." />
+                            <img data-cy="todo-empty-state" src={todoEmptyStateImage} className="max-w-full h-auto" alt="..." />
                         </button>
                     )}
                 </div>
