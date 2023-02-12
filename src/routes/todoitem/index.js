@@ -115,9 +115,9 @@ const TodoItem = () => {
                     </button>
                 </div>
                 <div className="flex items-center lg:justify-left flex-wrap w-full gap-3 flex-col my-6">
-                    {dataActivity.length > 0 ? (
-                        dataActivity &&
-                        dataActivity.map((item) => (
+                    {dataActivity?.todo_items?.length > 0 ? (
+                        dataActivity.todo_items &&
+                        dataActivity.todo_items.map((item) => (
                             <TodoItems
                                 key={item?.id}
                                 itemID={item?.id}
