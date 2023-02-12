@@ -103,30 +103,32 @@ const AddModalTodo = (props) => {
                                 <Dialog.Panel className="w-full max-w-3xl transform rounded-2xl bg-slate-50 p-8 shadow-xl transition-all flex items-center justify-center flex-col gap-8">
 
                                     <div className='flex items-center justify-between w-full'>
-                                        <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-gray-900" data-cy={todoId > 0 ? '' : "modal-add-title"}>
+                                        <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-gray-900" data-cy="modal-add-title">
                                             {todoId > 0 ? 'Edit List Item' : 'Tambah List Item'}
                                         </Dialog.Title>
-                                        <button data-cy={todoId > 0 ? '' : "modal-add-close-button"} onClick={HandleModalClose}>
+                                        <button data-cy="modal-add-close-button" onClick={HandleModalClose}>
                                             <i className="fa-solid fa-xmark text-2xl text-zinc-500"></i>
                                         </button>
                                     </div>
 
                                     <div className='flex items-center justify-center w-full flex-col gap-4'>
                                         <div className='flex justify-center items-start flex-col w-full gap-2'>
-                                            <label data-cy={todoId > 0 ? '' : "modal-add-name-title"} htmlFor="nama-list" className='text-xs font-bold'>NAMA LIST ITEM</label>
-                                            <input data-cy={todoId > 0 ? '' : "modal-add-name-input"} type="text" placeholder='Tambahkan nama Activity' className='w-full p-3 border-2 border-zinc-400 rounded-md focus:outline-sky-400' value={itemName} onChange={(e) => setItemName(e.target.value)} />
+                                            <label data-cy="modal-add-name-title" htmlFor="nama-list" className='text-xs font-bold'>NAMA LIST ITEM</label>
+                                            <input data-cy="modal-add-name-input" type="text" placeholder='Tambahkan nama Activity' className='w-full p-3 border-2 border-zinc-400 rounded-md focus:outline-sky-400' value={itemName} onChange={(e) => setItemName(e.target.value)} />
                                         </div>
                                     </div>
 
                                     <div className="flex items-center justify-start w-full relative">
                                         <div className='flex justify-center items-start flex-col w-full gap-2'>
-                                            <label data-cy={todoId > 0 ? '' : "modal-add-priority-title"} htmlFor="nama-list" className='text-xs font-bold'>PRITORITY</label>
+                                            <label data-cy="modal-add-priority-title" htmlFor="nama-list" className='text-xs font-bold'>PRITORITY</label>
                                             <Listbox value={selected} onChange={setSelected}>
                                                 <div className="relative mt-1">
                                                     <Listbox.Button className="relative w-[220px] cursor-default border-2 border-neutral-400 rounded-md p-3 focus:border-sky-400 flex items-center justify-start gap-3">
-                                                        <div className={`w-4 h-4 rounded-full ${selected?.label}`}></div>
-                                                        <span data-cy={todoId > 0 ? '' : "modal-add-priority-item"} className="block truncate">{selected?.name}</span>
-                                                        <div data-cy={todoId > 0 ? '' : "modal-add-priority-dropdown"} className="absolute inset-y-0 right-0 flex items-center pr-2">
+                                                        <div data-cy="modal-add-priority-item" className='flex items-center justify-center gap-3'>
+                                                            <div className={`w-4 h-4 rounded-full ${selected?.label}`}></div>
+                                                            <div className="text-md">{selected?.name}</div>
+                                                        </div>
+                                                        <div data-cy="modal-add-priority-dropdown" className="absolute inset-y-0 right-0 flex items-center pr-2">
                                                             <i className="fa-solid fa-chevron-down"></i>
                                                         </div>
                                                     </Listbox.Button>
@@ -172,7 +174,7 @@ const AddModalTodo = (props) => {
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-end gap-4 w-full">
-                                        <button data-cy={todoId > 0 ? '' : "modal-add-save-button"} disabled={!allowSubmit} className='bg-sky-500 py-4 px-8 text-white font-medium rounded-full disabled:opacity-[0.5]' ref={completeButtonRef} onClick={handleSubmit}>Simpan</button>
+                                        <button data-cy="modal-add-save-button" disabled={!allowSubmit} className='bg-sky-500 py-4 px-8 text-white font-medium rounded-full disabled:opacity-[0.5]' ref={completeButtonRef} onClick={handleSubmit}>Simpan</button>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
